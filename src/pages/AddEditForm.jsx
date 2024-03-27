@@ -39,6 +39,7 @@ const AddEditForm = () => {
     handleSubmit,
     formState: { errors },
     reset,
+    watch,
   } = useForm();
 
   useEffect(() => {
@@ -50,14 +51,22 @@ const AddEditForm = () => {
         isActive: datas.data.data.isActive,
         isDefault: datas.data.data.isDefault,
       };
+      console.log("values", values);
       reset({ ...values });
     }
     console.log(datas.isUninitialized);
   }, [datas, params, reset]);
 
   const OnFinish = (values) => {
-    console.log(values);
-    params.id ? updateFn({ id: params.id, ...values }) : addFn({id:"",...values});
+    const parameters = {
+      ...values,
+      isDefault: values.isDefault === "true" ? true : false,
+      isActive: values.isActive === "true" ? true : false,
+    };
+    console.log("formData: ", parameters);
+    params.id
+      ? updateFn({ id: params.id, ...parameters })
+      : addFn({ id: "", ...parameters });
   };
 
   useEffect(() => {
@@ -175,6 +184,7 @@ const AddEditForm = () => {
               <MRadioInput
                 control={control}
                 errors={errors}
+                watch={watch()}
                 name="isDefault"
                 label="آیا پیشفرض است؟"
                 options={[

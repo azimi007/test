@@ -94,6 +94,7 @@ const Main = () => {
           type: "success",
         });
         deleteRes.reset();
+        setShowDeleteConfirm(false)
       } else {
         toast(deleteRes.data.message, {
           type: "error",

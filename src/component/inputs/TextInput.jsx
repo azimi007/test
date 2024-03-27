@@ -9,17 +9,17 @@ const MTextInput = (props) => {
     <div style={{ display: "flex", flexDirection: "column", marginBottom: 20, flex:1 }}>
       <Controller
         control={control}
+        name={name}
         render={({ field: { onChange, onBlur, value } }) => (
           <TextField
             label={label}
             variant="outlined"
             onChange={onChange}
             onBlur={onBlur}
-            defaultValue={value}
+            value={value}
             type={type}
           />
         )}
-        name={name}
       />
       {errors[name] && (
         <Typography variant="overline" color="red" display="block" gutterBottom>

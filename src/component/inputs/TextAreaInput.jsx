@@ -15,7 +15,7 @@ const MTextAreaInput = (props) => {
             variant="outlined"
             onChange={onChange}
             onBlur={onBlur}
-            defaultValue={value}
+            value={value}
             type={type}
           />
         )}

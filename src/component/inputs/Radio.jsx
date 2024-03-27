@@ -10,8 +10,9 @@ import {
 import { Controller } from "react-hook-form";
 
 const MRadioInput = (props) => {
-  const { control, errors, name, label, options } = props;
-
+  const { control, errors, name, label, options , watch } = props;
+console.log(options);
+console.log(watch);
   return (
     <div style={{ display: "flex", flexDirection: "column", marginBottom: 20, flex:1 }}>
       <Controller
@@ -25,8 +26,8 @@ const MRadioInput = (props) => {
               row
               aria-labelledby="demo-row-radio-buttons-group-label"
               name={name}
-              defaultValue={value}
-              onChange={onChange}
+              value={value}
+              onChange={(event)=>{onChange(event.target.value)}}
               onBlur={onBlur}
             >
               {options.map((ele) => (
